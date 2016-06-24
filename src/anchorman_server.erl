@@ -55,7 +55,7 @@ start_handlers(EventServer, [Handler|Rest]) ->
 initial_state(Options) ->
   #{
     event_server => start_event_server(),
-    handlers => maps:get(handlers, Options, [anchorman_ws_handler])
+    handlers => maps:get(handlers, Options, [anchorman_mirror_handler])
    }.
 
 %%====================================================================

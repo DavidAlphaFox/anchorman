@@ -1,16 +1,29 @@
-# Anchorman
-> 60% of the time, it works every time
+# Anchorman [![Travis-CI](https://api.travis-ci.org/ostera/anchorman.svg)](https://travis-ci.org/ostera/anchorman)
+> ⚓👨 An Erlang library for broadcasting information
 
-## Architecture (Explained Shell Session)
+## Tutorial
 
 ```erlang
+Eshell V7.3  (abort with ^G)
 1> application:start(anchorman).
-% the anchorman_app will start up the anchorman_sup
-% the anchorman_sup will start the anchorman_server
-% the server will then sit idle awaiting for messages
-ok
-2> anchorman:listen(Event, fun Cb/1).
-% the callback function will be added to the list of listeners for that event
-3> anchorman:publish(Event, Data).
-% Cb will be called with Data
+[anchorman@mirror] I look fantastic today...ok
+3> anchorman:broadcast(<<"system.status">>, "60% of the time, it works every time").
+[anchorman@mirror] {broadcast,<<"system.status">>,"60% of the time, it works every time"}ok
 ```
+
+## Motivation
+
+When building [pry](https://github.com/ostera/pry) I found myself in the need for publishing information
+from inside the BEAM to the outside world with a unified interface that could let me plug more transports
+as I see need, and doesn't incur in much overhead or any refactor in my current code.
+
+And this clearly had nothing to do with gaining insight of an existing system, so I factored it out
+into a separate application/library.
+
+This way, either by manually starting an `anchorman_server` with a set of handlers, or by configuring
+it in your `app.src` file, you get to publish the same data to as many places as you want without rewriting
+a line of code. What? Neat? Yup.
+
+## Next Steps
+
+See the [issues page](https://github.com/ostera/anchorman/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) for a list of planned enhancements and features.

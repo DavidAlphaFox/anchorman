@@ -1,9 +1,9 @@
 %%%-------------------------------------------------------------------
-%% @doc event handler for publishing events through a websocket
+%% @doc sample event handler
 %% @end
 %%%-------------------------------------------------------------------
 
--module(anchorman_ws_handler).
+-module(anchorman_mirror_handler).
 
 -behaviour(gen_event).
 
@@ -21,6 +21,7 @@
 %%====================================================================
 
 init(S0) ->
+  io:format("[anchorman@mirror] I look fantastic today..."),
   {ok, S0}.
 
 handle_info(_, State) -> {ok, State}.
@@ -36,5 +37,5 @@ terminate(_Reason, _State) -> ok.
 %%====================================================================
 
 handle_event(Event, S) ->
-  io:format("[anchorman_ws@handle_event] ~p", [Event]),
+  io:format("[anchorman@mirror] ~p", [Event]),
   {ok, S}.
