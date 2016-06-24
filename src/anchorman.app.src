@@ -1,16 +1,15 @@
 {application, anchorman,
- [{description, "An OTP application"},
+ [{description, "An Erlang library for broadcasting information"},
   {vsn, "0.1.0"},
-  {registered, []},
+  {registered, [anchorman]},
   {mod, { anchorman_app, []}},
   {applications,
    [kernel,
     stdlib
    ]},
   {env,[]},
-  {modules, []},
-
-  {maintainers, []},
-  {licenses, []},
-  {links, []}
+  {modules, [anchorman]},
+  {maintainers, ["Leandro Ostera <leandro@ostera.io>"]},
+  {licenses, ["MIT"]},
+  {links, ["https://github.com/ostera/anchorman"]}
  ]}.
