@@ -21,7 +21,7 @@
 %%====================================================================
 
 init(S0) ->
-  io:format("[anchorman@mirror] I look fantastic today..."),
+  io:format("[anchorman@mirror] I look fantastic today!\n"),
   {ok, S0}.
 
 handle_info(_, State) -> {ok, State}.
@@ -30,7 +30,9 @@ handle_call(_, S) -> {ok, ok, S}.
 
 code_change(_OldVsn, State, _Extra) -> {ok, State}.
 
-terminate(_Reason, _State) -> ok.
+terminate(_Reason, _State) ->
+  io:format("[anchorman@mirror] I immediately regret this decision.\n"),
+  ok.
 
 %%====================================================================
 %% Handler functions
