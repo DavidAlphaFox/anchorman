@@ -51,11 +51,17 @@ start_handlers(EventServer, [Handler|Rest]) ->
   gen_event:add_sup_handler(EventServer, Handler, [ #{ server => EventServer } ]),
   start_handlers(EventServer, Rest).
 
+default_handlers() ->
+  case application:get_env(anchorman, handlers) of
+    undefined -> [];
+    {ok, Val} -> Val
+  end.
+
 -spec initial_state(#{}) -> #{}.
 initial_state(Options) ->
   #{
     event_server => start_event_server(),
-    handlers => maps:get(handlers, Options, [anchorman_mirror_handler])
+    handlers => maps:get(handlers, Options, default_handlers())
    }.
 
 %%====================================================================
