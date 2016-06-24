@@ -20,16 +20,29 @@
 %%====================================================================
 
 start_link() ->
-    supervisor:start_link({local, ?SERVER}, ?MODULE, []).
+  supervisor:start_link({local, ?SERVER}, ?MODULE, []).
 
-%%====================================================================
-%% Supervisor callbacks
-%%====================================================================
-
-%% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
-    {ok, { {one_for_all, 0, 1}, []} }.
+  {ok, { supervision_flags(), child_specs() } }.
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
+
+supervision_flags() -> #{
+  strategy  => one_for_all,
+  intensity => 0,
+  peiord    => 1
+ }.
+
+child_spec(Module, Id) -> #{
+  id       => Id,
+  restart  => permanent,
+  shutdown => brutal_kill,
+  start    => { Module, start_link, [] },
+  type     => worker
+ }.
+
+child_specs() -> [
+                  child_spec(anchorman_server, anchorman)
+                 ].
