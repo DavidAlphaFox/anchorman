@@ -1,7 +1,19 @@
 # Anchorman [![Travis-CI](https://api.travis-ci.org/ostera/anchorman.svg)](https://travis-ci.org/ostera/anchorman)
-> ⚓👨 An Erlang library for broadcasting information
+⚓👨 An Erlang library for broadcasting information
 
-## Tutorial
+## Installation
+
+Simply include in your `rebar.config` as:
+
+```erlang
+{deps, [
+  % ...
+  {anchorman, {git, "https://github.com/ostera/anchorman", {tag, "0.1.0"}}}
+  % ...
+]}.
+```
+
+## Usage
 
 ```erlang
 Eshell V7.3  (abort with ^G)
@@ -24,6 +36,18 @@ This way, either by manually starting an `anchorman_server` with a set of handle
 it in your `app.src` file, you get to publish the same data to as many places as you want without rewriting
 a line of code. What? Neat? Yup.
 
+## Contributing
+
+Fork, make a topic branch, and send a Pull Request. Travis will let you know if
+it's good to go, and from the on we can review, retouch, and merge.
+
+Included here is a `Makefile` with handy targets. Run `make` to execute the complete
+battery of tests.
+
 ## Next Steps
 
 See the [issues page](https://github.com/ostera/anchorman/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) for a list of planned enhancements and features.
+
+## License
+
+See [LICENSE](https://github.com/ostera/anchorman/blob/master/LICENSE).
