@@ -32,7 +32,7 @@ init([]) ->
 supervision_flags() -> #{
   strategy  => one_for_all,
   intensity => 0,
-  peiord    => 1
+  period    => 1
  }.
 
 child_spec(Module, Id) -> #{
