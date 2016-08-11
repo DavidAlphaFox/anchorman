@@ -1,4 +1,4 @@
-.PHONY: all test eunit check ct compile sh
+.PHONY: all test unit check ct compile sh
 
 REBAR=./rebar3
 
