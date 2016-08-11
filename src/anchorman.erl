@@ -19,12 +19,20 @@
 
 -type topic()   :: [char()] | binary().
 -type message() :: term().
--type handler() :: atom().
+-type handler() :: atom() | {atom(), atom()}.
+-type handlers() :: [ handler() ].
+
+-type server_state() :: #{
+        event_server => pid(),
+        handlers     => handlers()
+       }.
 
 -export_type([
-              topic/0,
+              handler/0,
+              handlers/0,
               message/0,
-              handler/0
+              server_state/0,
+              topic/0
              ]).
 
 %%====================================================================

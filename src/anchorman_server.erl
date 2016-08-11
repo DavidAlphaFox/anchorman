@@ -57,7 +57,7 @@ default_handlers() ->
     {ok, Val} -> Val
   end.
 
--spec initial_state(#{}) -> #{}.
+-spec initial_state(#{}) -> anchorman:server_state().
 initial_state(Options) ->
   #{
     event_server => start_event_server(),
@@ -68,7 +68,7 @@ initial_state(Options) ->
 %% Behavior functions
 %%====================================================================
 
--spec init(#{}) -> {ok, #{}}.
+-spec init(#{}) -> {ok, anchorman:server_state()}.
 init(Options) ->
   #{
      event_server := ES,
